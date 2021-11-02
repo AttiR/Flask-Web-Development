@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <form method="post" action="">
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+      <legend>Already have an account Log in</legend>
+
+      <div class="form-group">
+        {{ form.email.label(class= "form-control-label")}} 
+        {{ form.email(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{ form.password.label(class= "form-control-label")}} {{
+        form.password(class= "form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{ form.submit(class= "btn btn-outline-info")}}
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="border-top" pt-3>
+    <small class="text-muted">
+      Dont have an account Register?
+      <a class="ml-2" href="{{ url_for('register') }}"> sign up </a>
+    </small>
+  </div>
+</div>
+
+{% endblock %}

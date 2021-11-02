@@ -1,17 +1,5 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
   <h1>Registration</h1>
-
-  <form action="">
-    {{ template_form.hidden_tag() }} {{
-    template_form.text.label(class="form-label") }} <br />
-    {{ template_form.text(class="form-control in") }}<br />
-    {{template_form.email.label}} <br />
-    {{ template_form.email(class="form-control in") }} <br />
-    {{template_form.password.label}} <br />
-    {{ template_form.password(class="form-control in") }} <br />
-
-    {{template_form.submit(class="btn btn-success") }}
-  </form>
 </div>
 {% endblock %}
