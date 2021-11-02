@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <h1>Registration</h1>
+  <form action="">
+    {{ template_form.hidden_tag() }}
+    <div class="form-group">
+      {{ template_form.text.label }} <br>
+      {{ template_form.text() }}
+    </div>
+
+    {{ template_form.submit() }}
+  </form>
+</div>
+{% endblock %}
