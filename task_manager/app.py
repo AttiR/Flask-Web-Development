@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired, Length
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -24,7 +25,7 @@ tasks = []
 # form to ask user for input
 
 class taskForm(FlaskForm):
-    task = StringField("Task") #label
+    task = StringField("Task", validators=[DataRequired(),  Length(min=5, max=100)]) #"Task is label"
     submit = SubmitField("Add Task")
 
 # how to initialize the database
@@ -33,6 +34,7 @@ db.create_all()
 @app.route("/", methods = ["GET", "POST"])
 def index():
     # some logic so that our router handle the post request
+   
     if 'task' in request.form:
         #tasks.append(request.form['task'])
         db.session.add(Task(task_text = request.form['task'])) # now we are adding in database
