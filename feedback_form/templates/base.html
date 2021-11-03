@@ -1,0 +1,24 @@
+{% extends "bootstrap/base.html" %}  
+{% block title %} {% endblock %}
+    
+    {% block head %}
+    {{ super() }}
+     <!----CSS--->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='site.css')}}"
+    />
+
+    {% endblock %}
+    <body>
+        
+          {% block content %}{% endblock %}
+    <script>
+            if ( window.history.replaceState ) {
+              window.history.replaceState( null, null, window.location.href );
+            }
+    </script>
+     
+    </body>
+    </html>
