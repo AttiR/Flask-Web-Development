@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
-from forms import RegisterForm, LoginForm, FeedbackForm
+from forms import RegistrationForm, LoginForm, FeedbackForm
 from flask_bootstrap import Bootstrap
 from dotenv import load_dotenv
 load_dotenv()
@@ -16,9 +16,13 @@ def home():
     return render_template("index.html")
 
 # routes for forms
-@app.route("/register")
+@app.route("/register", methods= ['GET', 'POST'])
 def register():
-    form = RegisterForm()
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account Created for {form.username.data}!', 'success') # flash is an easy mthode to send one time alert
+        # set the base layout for flash messages at base.html
+        return redirect( url_for('home') )
     return render_template("signup.html", title = 'Register', form= form)
 
 @app.route("/login")
