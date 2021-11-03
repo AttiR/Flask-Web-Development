@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
-from forms import RegisterForm, LoginForm
+from forms import RegisterForm, LoginForm, FeedbackForm
 from flask_bootstrap import Bootstrap
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,7 +12,7 @@ app.config['SECRET_KEY'] = os.getenv("MY_KEY")
 bootstrap = Bootstrap(app)
 
 @app.route("/")
-def index():
+def home():
     return render_template("index.html")
 
 # routes for forms
@@ -24,6 +24,12 @@ def register():
 @app.route("/login")
 def login():
     form= LoginForm()
-    return render_template("signup.html", title = 'login', form= form)
+    return render_template("login.html", title = 'Login', form= form)
+
+@app.route("/contact")
+def contact():
+    form= FeedbackForm()
+    return render_template("contact.html", title = 'contact', form= form)
+
 
 
