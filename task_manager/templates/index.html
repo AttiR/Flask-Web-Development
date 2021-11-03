@@ -1,25 +1,19 @@
-{% extends "base.html" %} {% block head %} <title>Tasks Manager</title>
-{% endblock %} {% block content %}
+{% extends "base.html" %} 
+{% block content %}
 
 <div class="container">
   <h1>Tasks to Complete</h1>
   <ul>
-  {% for task in tasks %}
-  <li>{{task.task_text}}</li>
-  {% endfor %}
-</ul>
+    {% for task in tasks %}
+    <li>{{task.task_text}}</li>
+    {% endfor %}
+  </ul>
 
-<form method = "POST" action="">
-    {{template_form.hidden_tag()}} 
-    <p>
-        {{template_form.task.label}}
-        {{template_form.task()}}
-    </p>
-    <p>
-        {{template_form.submit()}}
-    </p>
-</form>
+  <form method="POST" action="">
+    {{template_form.hidden_tag()}}
+    <p>{{template_form.task.label}} {{template_form.task()}}</p>
+    <p>{{template_form.submit()}}</p>
+  </form>
 </div>
-
 
 {% endblock %}
