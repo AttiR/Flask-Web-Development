@@ -1,12 +1,12 @@
 {% extends "bootstrap/base.html" %}
-{% block title %} <title> Task Manager </title> {% endblock %}
+{% block title %} {% endblock %}
   {% block head %}
-    {{ super }}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='style.css')}}"
-    />
+    {{ super() }}
+      <link
+          rel="stylesheet"
+          type="text/css"
+          href="{{ url_for('static', filename='style.css')}}"
+      />
   {% endblock %}
 
   <body>

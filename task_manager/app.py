@@ -41,10 +41,10 @@ db.create_all()
 def index():
     # some logic so that our router handle the post request
     template_form = taskForm()
-    if template_form.validate_on_submit():
-        if 'task' in request.form:
+    
+    if 'task' in request.form:
             #tasks.append(request.form['task'])
             db.session.add(Task(task_text = request.form['task'])) # now we are adding in database
             db.session.commit()
 
-        return render_template("index.html", tasks = Task.query.all(), template_form = template_form) # we need pass newinstance object of class form
+    return render_template("index.html", tasks = Task.query.all(), template_form = template_form) # we need pass newinstance object of class form
