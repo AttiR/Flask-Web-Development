@@ -9,13 +9,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from dotenv import load_dotenv
 load_dotenv()
+from os import environ
 import os
 
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 app.config['SECRET_KEY'] = os.getenv('MY_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myDB.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URL') or 'sqlite:///myDB.db' # To check whethre its on heroku database or lcoal
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # we dont want to track modifications in database
 
 db = SQLAlchemy(app) # it will connect the databse with app
