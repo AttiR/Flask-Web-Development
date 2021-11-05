@@ -1,0 +1,13 @@
+{% extends "public/templates/public_template.html" %}
+{% block title %} Home {% endblock %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>welcome, Onboard</h1>
+            <p class="intro">we are learning, Flask-Structure</p>
+            <img src="{{ url_for('static', filename='img/flask.png') }}" alt="img">
+        </div>
+    </div>
+</div>
+{% endblock %}
