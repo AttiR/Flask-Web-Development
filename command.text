@@ -1,0 +1,15 @@
+python3 -m venv env
+pip install flask
+pip install --upgrade pip
+export FLASK_APP=app.py
+export FLASK_ENV=development
+export FLASK_DEBUG=1
+flask run
+__init__.py hold our app togthere and tells interparator this is a pacckage
+pip  freeze > requirements.tex
+
+
+Heroku deployment 
+pip install gunicorn
+pip freeze > requirements.txt
+Procfile web: gunicorn run:app

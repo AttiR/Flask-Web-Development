@@ -1,0 +1,14 @@
+
+ {% macro input(lable='', type='',name = '', id='', placeholder='') -%}
+ <div class="form-group">
+   <labe>{{ lable }}</labe>
+   <input
+     class="form-control"
+     type="{{ type }}"
+     name="{{ name }}"
+     text="{{text }}"
+     id="{{ id }}"
+     placeholder="{{ placeholder }}"
+   />
+ </div>
+ {% endmacro %}
