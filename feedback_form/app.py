@@ -14,6 +14,7 @@ mail= Mail(app)
 app.config['SECRET_KEY'] = os.getenv("MY_KEY")
 password = os.getenv('DATABASE_PASS')
 
+# devlopment and production ENV Databse setup
 ENV = 'dev'
 if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/flask_feedback'
