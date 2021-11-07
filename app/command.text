@@ -9,3 +9,7 @@ __init__.py hold our app togthere and tells interparator this is a pacckage
 pip  freeze > requirements.tex
 
 
+Heroku deployment 
+pip install gunicorn
+pip freeze > requirements.txt
+Procfile web: gunicorn run:app
