@@ -1,18 +1,13 @@
-{% extends "public/templates/public_template.html" %}
-{% import 'macros/input_macros.html' as im %}
-{% block title %} Jinja {%
-endblock %} {% block main %}
+{% extends "public/templates/public_template.html" %} {% import
+'macros/input_macros.html' as im %} {% block title %} Jinja {% endblock %} {%
+block main %}
 <div class="container">
   <div class="row">
     <div class="col">
       <h1>Jinja Template</h1>
       <hr />
       <p>name of admin is {{ name }}, and his age is, {{ age }}</p>
-      <ul>
-        {% for fruit in fruits%}
-        <li>{{ fruit }}</li>
-        {% endfor %}
-      </ul>
+
       <hr />
       <p>{{ info }}</p>
       <hr />
@@ -21,16 +16,14 @@ endblock %} {% block main %}
       <!----if we want to embed html --->
       <hr />
       <h2>Macros</h2>
-     <!--- Reuseable code snippet--->
-     {{ im.input(lable = 'Name', name = 'name', type='text', id='name',
-      placeholder= "please enter name") }}
-     {{ im.input(lable = 'Email',name='email', type='text', id='email',
-      placeholder= "please enter email") }}
-      {{ im.input(lable = 'Age' ,name='age',type='number', id='age',
-      placeholder= "please enter age") }}
-      {{ im.input(lable = 'Password' ,name='password', type='password', id='password',
-      placeholder= "please enter age") }}
-
+      <!--- Reuseable code snippet--->
+      {{ im.input(lable = 'Name', name = 'name', type='text', id='name',
+      placeholder= "please enter name") }} {{ im.input(lable =
+      'Email',name='email', type='text', id='email', placeholder= "please enter
+      email") }} {{ im.input(lable = 'Age' ,name='age',type='number', id='age',
+      placeholder= "please enter age") }} {{ im.input(lable = 'Password'
+      ,name='password', type='password', id='password', placeholder= "please
+      enter age") }}
     </div>
   </div>
 </div>
