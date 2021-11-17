@@ -1,5 +1,5 @@
 
-from werkzeug.utils import redirect
+
 from app import app # so that its run as it is in root
 from flask import render_template, request, url_for, redirect
 
@@ -53,4 +53,25 @@ def contact():
         print(name)
         return redirect(request.url)
     
-    return render_template("public/contact.html")        
+    return render_template("public/contact.html")    
+
+data = {
+     "Atti": {
+
+    "name": "Atti",
+    "profession": "engineer"}
+
+}
+
+@app.route("/profile/<username>")
+def prof(username):
+
+    user = None
+    if username in data:
+        user = data[username]
+    return render_template("public/profile.html", user=user)
+
+# Json data
+@app.route("/json", methods=['POST', 'GET'])  
+def json():
+    return 'Thanks', 200

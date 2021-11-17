@@ -5,12 +5,16 @@ from flask_mail import Mail, Message
 from form import FeedbackForm
 from flask_bootstrap import Bootstrap
 from dotenv import load_dotenv
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 load_dotenv()
 import os
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 mail= Mail(app)
+admin=Admin(app)
+
 app.config['SECRET_KEY'] = os.getenv("MY_KEY")
 password = os.getenv('DATABASE_PASS')
 
@@ -18,10 +22,11 @@ password = os.getenv('DATABASE_PASS')
 ENV = 'dev'
 if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/flask_feedback'
-    app.debug = True
+    app.debug= True
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = ''
-    app.debug = False
+    app.debug= False 
+    
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
