@@ -1,3 +1,4 @@
+from re import DEBUG
 from flask import Flask, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask.templating import render_template
@@ -5,27 +6,28 @@ from flask_mail import Mail, Message
 from form import FeedbackForm
 from flask_bootstrap import Bootstrap
 from dotenv import load_dotenv
-from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
+
 load_dotenv()
 import os
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 mail= Mail(app)
-admin=Admin(app)
+
 
 app.config['SECRET_KEY'] = os.getenv("MY_KEY")
 password = os.getenv('DATABASE_PASS')
 
-# devlopment and production ENV Databse setup
-ENV = 'dev'
-if ENV == 'dev':
+ENV='prod'
+if ENV=='dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/flask_feedback'
-    app.debug= True
+    DEBUG=True
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = ''
-    app.debug= False 
+    DEBUG=True
+
+
+
     
 
 
@@ -46,6 +48,7 @@ class Feedback(db.Model):
         self.name=name
         self.email=email
         self.feedback=feedback
+
 
 
 
@@ -88,3 +91,5 @@ def contact():
             return "email not sent"
         
     return render_template ("contact.html", title = 'Feedback', form= form)
+
+
